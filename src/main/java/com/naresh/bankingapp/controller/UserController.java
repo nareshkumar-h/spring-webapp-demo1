@@ -40,15 +40,12 @@ public class UserController {
 	}
 
 	@GetMapping("/login.do")
-	public String login(@RequestParam("email") String email, @RequestParam("password") String password,
+	public @ResponseBody User login(@RequestParam("email") String email, @RequestParam("password") String password,
 			HttpSession session) {
 		System.out.println("UserController->login");
-		User user = new User(); // userDAO.login(email,password);
-		user.setId(1);
-		user.setName("Naresh");
-		user.setEmail("nareshkumarh@live.com");
-		System.out.println("Login =>" + user);
-		return "redirect:../home.html";
+		User user = userService.login(email, password);
+		System.out.println("User:" +  user);		
+		return user;
 
 	}
 

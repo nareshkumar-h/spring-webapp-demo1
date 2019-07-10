@@ -26,4 +26,9 @@ public class UserService2 {
 	public List<User> list(){
 		return userDAO.list();
 	}
+	
+	@Transactional
+	public User login(String email,String password){
+		return userDAO.login(email, password);
+	}
 }
