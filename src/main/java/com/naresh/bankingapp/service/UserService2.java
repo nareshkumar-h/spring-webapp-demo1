@@ -1,5 +1,7 @@
 package com.naresh.bankingapp.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +20,9 @@ public class UserService2 {
 	public void save(User user) {
 		System.out.println("UserService2 -> save" + user);
 		userDAO.save(user);
+	}
+	
+	public List<User> list(){
+		return userDAO.list();
 	}
 }
