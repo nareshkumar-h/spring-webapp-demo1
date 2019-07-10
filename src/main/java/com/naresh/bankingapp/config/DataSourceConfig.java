@@ -24,10 +24,10 @@ public class DataSourceConfig {
 	public DataSource dataSource() {
 		System.out.println("Creating dataSource");
 		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/bankdb");
-		ds.setUsername("root");
-		ds.setPassword("root");
+		ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+		ds.setUrl("jdbc:oracle:thin:@trainingdb.cmqwe8vrjnur.us-east-1.rds.amazonaws.com:1521:orcl");
+		ds.setUsername("naresh");
+		ds.setPassword("password");
 		return ds;
 	}
 
@@ -52,7 +52,7 @@ public class DataSourceConfig {
 	@Bean
 	public Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.Oracle12cDialect");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
 		// properties.put("hibernate.hbm2ddl.auto", "none");
