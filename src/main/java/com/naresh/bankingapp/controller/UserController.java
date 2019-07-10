@@ -60,7 +60,7 @@ public class UserController {
 		user.setName("Naresh");
 		user.setEmail("nareshkumarh@live.com");
 
-		List<User> userList = new ArrayList<User>();
+		List<User> userList = userService.list();
 		userList.add(user);
 
 		return userList;

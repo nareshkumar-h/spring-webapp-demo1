@@ -22,6 +22,7 @@ public class UserService2 {
 		userDAO.save(user);
 	}
 	
+	@Transactional
 	public List<User> list(){
 		return userDAO.list();
 	}
