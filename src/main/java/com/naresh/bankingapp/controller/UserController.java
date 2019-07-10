@@ -1,14 +1,13 @@
 package com.naresh.bankingapp.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -48,18 +47,30 @@ public class UserController {
 		return user;
 
 	}
+	
+	@GetMapping("/view.do/{userId}")
+	public @ResponseBody User viewUser(@PathVariable("userId") String id) {
+		System.out.println("UserController->viewUser" + id);
+		Integer userId = Integer.parseInt(id);
+		User user = userService.findOne(userId);
+		System.out.println("User:" +  user);		
+		return user;
+
+	}
+	
+	@GetMapping("/delete.do")
+	public String delete(@RequestParam("userId") Integer userId) {
+		System.out.println("UserController->deleteUser" + userId);
+		//Integer userId = Integer.parseInt(id);
+		userService.delete(userId);		
+		return "redirect:../listusers.html";
+
+	}
 
 	@GetMapping("/list.do")
 	public @ResponseBody List<User> list() {
 		System.out.println("UserController->list");
-		User user = new User();
-		user.setId(1);
-		user.setName("Naresh");
-		user.setEmail("nareshkumarh@live.com");
-
 		List<User> userList = userService.list();
-		userList.add(user);
-
 		return userList;
 
 	}

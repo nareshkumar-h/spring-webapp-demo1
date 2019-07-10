@@ -31,4 +31,14 @@ public class UserService2 {
 	public User login(String email,String password){
 		return userDAO.login(email, password);
 	}
+
+	@Transactional
+	public User findOne(Integer userId) {
+		return userDAO.findOne(userId);
+	}
+
+	@Transactional
+	public void delete(Integer userId) {
+		userDAO.delete(userId);
+	}
 }

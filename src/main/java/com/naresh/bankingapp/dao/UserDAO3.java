@@ -25,7 +25,7 @@ public class UserDAO3 {
 	public User login(String email,String password) {
 		User user = null;
 		Session session = sessionFactory.getCurrentSession();
-		Query<User> createQuery = session.createQuery("from User u where email = ?1 and password=?2", User.class);
+		Query<User> createQuery = session.createQuery("from User u where u.email = ?1 and u.password=?2", User.class);
 		createQuery.setParameter(1, email);
 		createQuery.setParameter(2, password);
 		try {
@@ -40,6 +40,19 @@ public class UserDAO3 {
 		Session session = sessionFactory.getCurrentSession();
 		List<User> list = session.createQuery("from User",User.class).list();
 		return list;
+	}
+
+	public User findOne(Integer userId) {
+		Session session = sessionFactory.getCurrentSession();
+		User user = session.get(User.class,userId);
+		return user;
+	}
+
+	public void delete(Integer userId) {
+		Session session = sessionFactory.getCurrentSession();
+		User user = session.get(User.class,userId);
+		System.out.println("User delete " + user);
+		session.delete(user);		
 	}
 
 }

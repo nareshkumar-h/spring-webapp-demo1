@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+function loadUsers(){
+	
+	var url = "http://localhost:8080/bankingapp-web-spring/users/list.do";
+	$("#usersTbl tbody").empty();
+	$.getJSON(url, function(response){
+		let users= response;
+		console.log(response);
+		var tbody = "";
+		
+		for ( var user of users){
+			tbody+="<tr>";
+			tbody+="<td>"+ user.id + "</td><td>" + user.name + "</td><td>" + user.email +"</td>";			
+			tbody+="<td><a href='users/delete.do?userId=" + user.id + "'>Delete</a></td>";
+			tbody+= "</tr>";
+		}
+		$("#usersTbl tbody").append(tbody);
+	});
+	
+}
+loadUsers();
+</script>
+</head>
+<body>
+<h2>List Users</h2>
+<table border="1" id="usersTbl">
+<thead><tr><th>Id </th> <th>Name </th> <th>Email </th> </tr>
+<tbody>
+</tbody>
+</table>
+</body>
+</html>

@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 	
+	@GetMapping("/")
+	public String index() {
+		return "index.html";
+	}
+	
 	@GetMapping("/next.do")
 	public String next() {
 		System.out.println("HomeController->next");
