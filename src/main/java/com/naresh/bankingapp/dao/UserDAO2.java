@@ -16,9 +16,10 @@ public class UserDAO2 {
 	private SessionFactory sessionFactory;
 
 	public void save(User user) {
+
+		System.out.println("UserDAO2->save" + user);
 		Session session = null;
 		try {
-			System.out.println("UserDAO2->save" + user);
 			System.out.println(sessionFactory);
 			session = sessionFactory.openSession();
 			Transaction tx = session.beginTransaction();

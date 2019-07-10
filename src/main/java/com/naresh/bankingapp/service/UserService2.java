@@ -9,7 +9,6 @@ import com.naresh.bankingapp.dao.UserDAO3;
 import com.naresh.bankingapp.model.User;
 
 @Service
-
 public class UserService2 {
 
 	@Autowired
