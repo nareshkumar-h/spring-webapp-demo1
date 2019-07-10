@@ -60,7 +60,7 @@ public class UserController {
 		
 		List<User> userList = new ArrayList<User>();
 		userList.add(user);
-		//userDAO.save(user);
+		
 		return "redirect:../home.html";
 		
 	}
