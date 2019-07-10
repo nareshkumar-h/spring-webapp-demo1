@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.naresh.bankingapp.model.User;
-import com.naresh.bankingapp.service.UserService;
+import com.naresh.bankingapp.service.UserService2;
 
 @Controller
 @RequestMapping("users")
 public class UserController {
 	
 	@Autowired
-	private UserService userService;// = new UserService();
+	private UserService2 userService;// = new UserService();
 	
 	@GetMapping("/register.do")
 	public String register(@RequestParam("name") String name,
